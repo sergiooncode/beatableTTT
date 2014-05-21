@@ -6,4 +6,8 @@ describe Player, '#nextmove' do
     player = Player.new
     player.move(2).should eql '-X-------'
   end
+  it "returns board with next move for position 4" do
+    player = Player.new 
+    player.move(4).should eql '---O-----'
+  end
 end

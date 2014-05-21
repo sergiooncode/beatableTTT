@@ -1,6 +1,8 @@
 # player.rb
 class Player 
   def move(position)
-    return '-X-------'
+    board = '---------'
+    board[position - 1] = 'O'
+    return board
   end
 end
