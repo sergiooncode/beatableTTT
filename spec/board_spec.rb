@@ -13,4 +13,7 @@ describe Board do
     @board.set_square(2, 'X')
     @board.get_squares.should eql '-X-------'
   end
+  it "checks if an square is empty" do 
+    @board.is_square_empty(3).should be_true 
+  end
 end
