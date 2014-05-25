@@ -12,6 +12,6 @@ class Board
     @squares[position - 1] = token
   end
   def is_square_empty(position)
-    @squares[position] == '-'
+    @squares[position - 1] == '-'
   end
 end

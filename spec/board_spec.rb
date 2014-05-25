@@ -6,17 +6,17 @@ describe Board do
   end
 
   it "gets empty squares" do
-    @board.get_squares.should eql '---------'
+    expect(@board.get_squares).to eql('---------')
   end
   it "sets 2nd square to X" do
     @board.set_square(2, 'X')
-    @board.get_squares.should eql '-X-------'
+    expect(@board.get_squares).to eql('-X-------')
   end
   it "checks if an square is empty and it is" do 
-    @board.is_square_empty(3).should be_true 
+    expect(@board.is_square_empty(3)).to be_true 
   end
   it "checks if an square is empty and it is not" do
     @board.set_square(2, 'O')
-    @board.is_square_empty(2).should be_true
+    expect(@board.is_square_empty(2)).to be_false
   end
 end

@@ -7,6 +7,6 @@ describe Player do
 
   it "returns board with next move for position 4" do
     token = @player.get_token
-    @player.move(4, token).should eql '---X-----'
+    expect(@player.move(4, token)).to eql('---X-----')
   end
 end
