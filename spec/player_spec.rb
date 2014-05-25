@@ -1,5 +1,4 @@
-# player_spec.rb
-require_relative '../player'
+require 'player'
 
 describe Player do
   before :each do
