@@ -5,8 +5,8 @@ describe Game do
     output = double('output')
     game = Game.new(output)
 
-    output.should_receive(:puts).with('Welcome to TTT game in Ruby!')
-
+    expect(output).to receive(:puts).with('Welcome to TTT game in Ruby!') 
+    
     game.start
   end
 end
