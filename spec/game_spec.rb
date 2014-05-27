@@ -33,13 +33,11 @@ describe Game do
 
       game.ask_for_move
     end
-    it "makes next move calling move method on player instance" do
+    it "makes next move calling move method on player instance with position 5" do
       output = double('output')
       game = Game.new(output)
 
-      expect(game).to receive(:make_move)
-
-      game.make_move
+      expect(game.make_move(5)).to eql('----X----')
     end
   end
 end

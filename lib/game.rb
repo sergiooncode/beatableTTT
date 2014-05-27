@@ -15,4 +15,8 @@ class Game
   def ask_for_move
     move = gets
   end
+  def make_move(position)
+    token = player.get_token
+    @player.move(position, token)
+  end
 end
