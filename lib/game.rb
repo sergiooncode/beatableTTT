@@ -12,4 +12,7 @@ class Game
   def start
     @output.puts('Welcome to TTT game in Ruby!')
   end
+  def ask_for_move
+    move = gets
+  end
 end
