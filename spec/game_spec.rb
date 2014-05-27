@@ -21,12 +21,19 @@ describe Game do
     end
   end
   context "while playing" do
-    it "asks a player for next move one time" do
+    it "asks human player for move one time" do
       game = Game.new
 
-      expect(game).to receive(:ask_for_move)
+      expect(game).to receive(:ask_human_for_move)
 
-      game.ask_for_move
+      game.ask_human_for_move
+    end
+    it "asks machine player for move one time" do
+      game = Game.new
+
+      expect(game).to receive(:ask_machine_for_move)
+
+      game.ask_machine_for_move
     end
     it "makes next move calling move method on player instance with position 5" do
       game = Game.new

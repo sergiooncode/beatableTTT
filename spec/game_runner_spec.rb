@@ -23,12 +23,19 @@ describe GameRunner do
 
       game_runner.game.make_move
     end
-    it "asks player for move and makes it" do
+    it "asks human player for move and makes it" do
       game_runner = GameRunner.new
 
-      expect(game_runner).to receive(:ask_player_for_move)
+      expect(game_runner).to receive(:ask_human_player_for_move)
 
-      game_runner.ask_player_for_move
+      game_runner.ask_human_player_for_move
+    end
+    it "asks machine player for move and makes it" do
+      game_runner = GameRunner.new
+
+      expect(game_runner).to receive(:ask_machine_player_for_move)
+
+      game_runner.ask_machine_player_for_move
     end
     it "plays game" do
       game_runner = GameRunner.new
