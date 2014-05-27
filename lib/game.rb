@@ -4,17 +4,16 @@ require 'player'
 class Game
   attr_accessor :board, :player
 
-  def initialize(output)
-    @output = output
+  def initialize
     @board = Board.new(9)
     @player = Player.new('X')
   end
   def start
-    @output.puts('Welcome to TTT game in Ruby!')
+    puts('Welcome to TTT game in Ruby!')
   end
   def ask_for_move
     position = gets
-    position
+    position.delete!("\n").to_i
   end
   def make_move(position)
     token = player.get_token
