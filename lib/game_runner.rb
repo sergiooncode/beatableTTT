@@ -15,9 +15,11 @@ class GameRunner
     @game.make_move(position)
   end
   def run
-    board = ask_human_player_for_move
-    puts board
-    board = ask_machine_player_for_move
-    puts board
+    while true
+      board = ask_human_player_for_move
+      puts board
+      board = ask_machine_player_for_move
+      puts board
+    end
   end
 end
