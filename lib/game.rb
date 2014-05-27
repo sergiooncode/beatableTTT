@@ -13,7 +13,8 @@ class Game
     @output.puts('Welcome to TTT game in Ruby!')
   end
   def ask_for_move
-    move = gets
+    position = gets
+    position
   end
   def make_move(position)
     token = player.get_token
