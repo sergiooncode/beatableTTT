@@ -33,76 +33,71 @@ describe GameRef do
   end
   context "when checking columns for winner" do
     let(:game_ref){ described_class.new }
+    before :each do
+      @board = Board.new(9)
+    end
     it "checks if winner on 1st column and there is one" do
-      board = Board.new(9)
+      @board.squares[0] = 'O'
+      @board.squares[3] = 'O'
+      @board.squares[6] = 'O'
 
-      board.squares[0] = 'O'
-      board.squares[3] = 'O'
-      board.squares[6] = 'O'
-
-      expect(game_ref.check_on_columns(board)).to eql 'O'
+      expect(game_ref.check_on_columns(@board)).to eql 'O'
     end
     it "checks if winner on 2nd column and there is one" do
-      board = Board.new(9)
+      @board.squares[1] = 'O'
+      @board.squares[4] = 'O'
+      @board.squares[7] = 'O'
 
-      board.squares[1] = 'O'
-      board.squares[4] = 'O'
-      board.squares[7] = 'O'
-
-      expect(game_ref.check_on_columns(board)).to eql 'O'
+      expect(game_ref.check_on_columns(@board)).to eql 'O'
     end
     it "checks if winner on 3rd column and there is one" do
-      board = Board.new(9)
+      @board.squares[2] = 'O'
+      @board.squares[5] = 'O'
+      @board.squares[8] = 'O'
 
-      board.squares[2] = 'O'
-      board.squares[5] = 'O'
-      board.squares[8] = 'O'
-
-      expect(game_ref.check_on_columns(board)).to eql 'O'
+      expect(game_ref.check_on_columns(@board)).to eql 'O'
     end
   end
   context "when checking diagonals for winner" do
     let(:game_ref){ described_class.new }
+    before :each do
+      @board = Board.new(9)
+    end
     it "checks if winner on N-S diagonal" do
-      board = Board.new(9)
+      @board.squares[0] = 'X'
+      @board.squares[4] = 'X'
+      @board.squares[8] = 'X'
 
-      board.squares[0] = 'X'
-      board.squares[4] = 'X'
-      board.squares[8] = 'X'
-
-      expect(game_ref.check_on_diagonals(board)).to eql 'X'
+      expect(game_ref.check_on_diagonals(@board)).to eql 'X'
     end
     it "checks if winner on S-N diagonal" do
-      board = Board.new(9)
+      @board.squares[2] = 'X'
+      @board.squares[4] = 'X'
+      @board.squares[6] = 'X'
 
-      board.squares[2] = 'X'
-      board.squares[4] = 'X'
-      board.squares[6] = 'X'
-
-      expect(game_ref.check_on_diagonals(board)).to eql 'X'
+      expect(game_ref.check_on_diagonals(@board)).to eql 'X'
     end
   end
   context "when checking if there is winner" do
     let(:game_ref){ described_class.new}
+    before :each do
+      @board = Board.new(9)
+    end
     it "checks if there is winner and it doesn't" do
-      board = Board.new(9)
-
-      expect(game_ref.winner?(board)).to be_false
+      expect(game_ref.winner?(@board)).to be_false
     end
     it "checks if there is winner and it does" do
-      board = Board.new(9)
+      @board.squares[0] = 'X'
+      @board.squares[1] = 'O'
+      @board.squares[2] = 'X'
+      @board.squares[3] = 'X'
+      @board.squares[4] = 'O'
+      @board.squares[5] = '-'
+      @board.squares[6] = '-'
+      @board.squares[7] = 'O'
+      @board.squares[8] = '-'
 
-      board.squares[0] = 'X'
-      board.squares[1] = 'O'
-      board.squares[2] = 'X'
-      board.squares[3] = 'X'
-      board.squares[4] = 'O'
-      board.squares[5] = '-'
-      board.squares[6] = '-'
-      board.squares[7] = 'O'
-      board.squares[8] = '-'
-
-      expect(game_ref.winner?(board)).to be_true
+      expect(game_ref.winner?(@board)).to be_true
     end
   end
 end
