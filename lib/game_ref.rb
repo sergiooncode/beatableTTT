@@ -34,4 +34,16 @@ class GameRef
     end
     winner
   end
+  def winner?(board)
+    if check_on_rows(board) != nil
+     return true
+    end
+    if check_on_columns(board) != nil 
+     return true
+    end
+    if check_on_diagonals(board) != nil
+      return true
+    end
+    false
+  end
 end

@@ -3,37 +3,32 @@ require 'game_ref'
 describe GameRef do
   context "when checking rows for winner" do
     let(:game_ref){ described_class.new }
+    before :each do
+      @board = Board.new(9)
+    end
     it "checks if winner on rows and there is none" do
-      board = Board.new(9)
-
-      expect(game_ref.check_on_rows(board)).to eql nil
+      expect(game_ref.check_on_rows(@board)).to eql nil
     end
     it "checks if winner on 1st row and there is one" do
-      board = Board.new(9)
+      @board.squares[0] = 'X'
+      @board.squares[1] = 'X'
+      @board.squares[2] = 'X'
 
-      board.squares[0] = 'X'
-      board.squares[1] = 'X'
-      board.squares[2] = 'X'
-
-      expect(game_ref.check_on_rows(board)).to eql 'X'
+      expect(game_ref.check_on_rows(@board)).to eql 'X'
     end
     it "checks if winner on 2nd row and there is one" do
-      board = Board.new(9)
-      
-      board.squares[3] = 'X'
-      board.squares[4] = 'X'
-      board.squares[5] = 'X'
+      @board.squares[3] = 'X'
+      @board.squares[4] = 'X'
+      @board.squares[5] = 'X'
 
-      expect(game_ref.check_on_rows(board)).to eql 'X'
+      expect(game_ref.check_on_rows(@board)).to eql 'X'
     end
     it "checks if winner on 3rd row and there is one" do
-      board = Board.new(9)
-      
-      board.squares[6] = 'X'
-      board.squares[7] = 'X'
-      board.squares[8] = 'X'
+      @board.squares[6] = 'X'
+      @board.squares[7] = 'X'
+      @board.squares[8] = 'X'
 
-      expect(game_ref.check_on_rows(board)).to eql 'X'
+      expect(game_ref.check_on_rows(@board)).to eql 'X'
     end
   end
   context "when checking columns for winner" do
@@ -47,7 +42,7 @@ describe GameRef do
 
       expect(game_ref.check_on_columns(board)).to eql 'O'
     end
-    it "check if winner on 2nd column and there is one" do
+    it "checks if winner on 2nd column and there is one" do
       board = Board.new(9)
 
       board.squares[1] = 'O'
@@ -56,7 +51,7 @@ describe GameRef do
 
       expect(game_ref.check_on_columns(board)).to eql 'O'
     end
-    it "check if winner on 3rd column and there is one" do
+    it "checks if winner on 3rd column and there is one" do
       board = Board.new(9)
 
       board.squares[2] = 'O'
@@ -68,7 +63,7 @@ describe GameRef do
   end
   context "when checking diagonals for winner" do
     let(:game_ref){ described_class.new }
-    it "check if winner on N-S diagonal" do
+    it "checks if winner on N-S diagonal" do
       board = Board.new(9)
 
       board.squares[0] = 'X'
@@ -77,7 +72,7 @@ describe GameRef do
 
       expect(game_ref.check_on_diagonals(board)).to eql 'X'
     end
-    it "check if winner on S-N diagonal" do
+    it "checks if winner on S-N diagonal" do
       board = Board.new(9)
 
       board.squares[2] = 'X'
@@ -85,6 +80,29 @@ describe GameRef do
       board.squares[6] = 'X'
 
       expect(game_ref.check_on_diagonals(board)).to eql 'X'
+    end
+  end
+  context "when checking if there is winner" do
+    let(:game_ref){ described_class.new}
+    it "checks if there is winner and it doesn't" do
+      board = Board.new(9)
+
+      expect(game_ref.winner?(board)).to be_false
+    end
+    it "checks if there is winner and it does" do
+      board = Board.new(9)
+
+      board.squares[0] = 'X'
+      board.squares[1] = 'O'
+      board.squares[2] = 'X'
+      board.squares[3] = 'X'
+      board.squares[4] = 'O'
+      board.squares[5] = '-'
+      board.squares[6] = '-'
+      board.squares[7] = 'O'
+      board.squares[8] = '-'
+
+      expect(game_ref.winner?(board)).to be_true
     end
   end
 end
