@@ -6,22 +6,24 @@ describe Board do
   end
 
   it "gets empty squares" do
-    expect(@board.get_squares).to eql('---------')
+    expect(@board.squares).to eql('---------')
   end
   it "sets 2nd square to X" do
-    @board.set_square(2, 'X')
-    expect(@board.get_squares).to eql('-X-------')
+    @board.squares[1] = 'X'
+
+    expect(@board.squares).to eql('-X-------')
   end
   it "checks if an square is empty and it is" do 
     expect(@board.is_square_empty(3)).to be_true 
   end
   it "checks if an square is empty and it is not" do
-    @board.set_square(2, 'O')
+    @board.squares[2] = 'O'
+
     expect(@board.is_square_empty(2)).to be_false
   end
   it "gets the token in one square" do
-    @board.set_square(9, 'X')
+    @board.squares[8] = 'X'
 
-    expect(@board.get_square(9)).to eql('X')
+    expect(@board.squares).to eql('--------X')
   end
 end
