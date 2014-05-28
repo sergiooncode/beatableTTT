@@ -8,6 +8,9 @@ class Board
   def get_squares
     @squares
   end
+  def get_square(position)
+    @squares[position - 1]
+  end
   def set_square(position, token)
     @squares[position - 1] = token
   end

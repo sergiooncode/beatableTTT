@@ -19,4 +19,9 @@ describe Board do
     @board.set_square(2, 'O')
     expect(@board.is_square_empty(2)).to be_false
   end
+  it "gets the token in one square" do
+    @board.set_square(9, 'X')
+
+    expect(@board.get_square(9)).to eql('X')
+  end
 end
