@@ -6,7 +6,7 @@ describe GameRef do
     it "checks if winner on rows and there is none" do
       board = Board.new(9)
 
-      expect(game_ref.check_on_rows(board)).to be_false
+      expect(game_ref.check_on_rows(board)).to eql nil
     end
     it "checks if winner on 1st row and there is one" do
       board = Board.new(9)
@@ -15,7 +15,7 @@ describe GameRef do
       board.squares[1] = 'X'
       board.squares[2] = 'X'
 
-      expect(game_ref.check_on_rows(board)).to be_true
+      expect(game_ref.check_on_rows(board)).to eql 'X'
     end
     it "checks if winner on 2nd row and there is one" do
       board = Board.new(9)
@@ -24,7 +24,7 @@ describe GameRef do
       board.squares[4] = 'X'
       board.squares[5] = 'X'
 
-      expect(game_ref.check_on_rows(board)).to be_true
+      expect(game_ref.check_on_rows(board)).to eql 'X'
     end
     it "checks if winner on 3rd row and there is one" do
       board = Board.new(9)
@@ -33,7 +33,7 @@ describe GameRef do
       board.squares[7] = 'X'
       board.squares[8] = 'X'
 
-      expect(game_ref.check_on_rows(board)).to be_true
+      expect(game_ref.check_on_rows(board)).to eql 'X'
     end
   end
   context "when checking columns for winner" do
@@ -45,7 +45,7 @@ describe GameRef do
       board.squares[3] = 'O'
       board.squares[6] = 'O'
 
-      expect(game_ref.check_on_columns(board)).to be_true
+      expect(game_ref.check_on_columns(board)).to eql 'O'
     end
     it "check if winner on 2nd column and there is one" do
       board = Board.new(9)
@@ -54,7 +54,7 @@ describe GameRef do
       board.squares[4] = 'O'
       board.squares[7] = 'O'
 
-      expect(game_ref.check_on_columns(board)).to be_true
+      expect(game_ref.check_on_columns(board)).to eql 'O'
     end
     it "check if winner on 3rd column and there is one" do
       board = Board.new(9)
@@ -63,7 +63,7 @@ describe GameRef do
       board.squares[5] = 'O'
       board.squares[8] = 'O'
 
-      expect(game_ref.check_on_columns(board)).to be_true
+      expect(game_ref.check_on_columns(board)).to eql 'O'
     end
   end
   context "when checking diagonals for winner" do
@@ -75,7 +75,7 @@ describe GameRef do
       board.squares[4] = 'X'
       board.squares[8] = 'X'
 
-      expect(game_ref.check_on_diagonals(board)).to be_true
+      expect(game_ref.check_on_diagonals(board)).to eql 'X'
     end
     it "check if winner on S-N diagonal" do
       board = Board.new(9)
@@ -84,7 +84,7 @@ describe GameRef do
       board.squares[4] = 'X'
       board.squares[6] = 'X'
 
-      expect(game_ref.check_on_diagonals(board)).to be_true
+      expect(game_ref.check_on_diagonals(board)).to eql 'X'
     end
   end
 end
