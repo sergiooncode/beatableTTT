@@ -5,9 +5,8 @@ class Player
   def get_token
     @token
   end
-  def move(position, token)
-    board = '---------'
-    board[position - 1] = token 
-    return board
+  def move(board, position, token)
+    board.squares[position - 1] = token 
+    board
   end
 end
