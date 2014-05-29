@@ -9,4 +9,10 @@ describe HumanPlayer do
 
     human_player.move
   end
+  it "checks if position is valid and it is not" do
+    expect(human_player.invalid?(10)).to be_true
+  end
+  it "checks if position is valid and it is" do
+    expect(human_player.invalid?(1)).to be_false
+  end
 end
