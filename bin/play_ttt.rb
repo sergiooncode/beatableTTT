@@ -5,3 +5,4 @@ require 'game'
 game = Game.new
 game.start
 game.run
+game.finish

@@ -41,6 +41,8 @@ class Game
       show_board
     end
     show_board
+  end
+  def finish
     if @game_rules.winner?(@board)
       puts "Player #{@game_rules.who_is_winner} won."
     else
