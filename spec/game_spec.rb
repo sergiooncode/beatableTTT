@@ -11,8 +11,11 @@ describe Game do
     it "has a board" do
       expect(game.board).not_to be_nil
     end
-    it "has a player" do
-      expect(game.player).not_to be_nil
+    it "has a human player" do
+      expect(game.human_player).not_to be_nil
+    end
+    it "has a machine player" do
+      expect(game.machine_player).not_to be_nil
     end
   end
   context "while game is ongoing" do
@@ -31,9 +34,6 @@ describe Game do
       expect(game).to receive(:ask_machine_for_move)
 
       game.ask_machine_for_move
-    end
-    it "makes next move calling move method on player instance with position 5" do
-      expect(game.make_move(5)).to eql('----X----')
     end
     it "shows current board formatted" do
       expect(game).to receive(:show_board)

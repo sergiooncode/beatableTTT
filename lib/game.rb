@@ -1,27 +1,27 @@
 require 'board'
-require 'player'
+require 'human_player'
 require 'game_rules'
+require 'machine_player'
 
 class Game
-  attr_accessor :board, :player, :game_rules
+  attr_accessor :board, :human_player, :machine_player, :game_rules
 
   def initialize
     @board = Board.new(9)
-    @player = Player.new('X')
+    @human_player = HumanPlayer.new('X')
+    @machine_player = MachinePlayer.new('O')
     @game_rules = GameRules.new
   end
   def start
     puts('Welcome to TTT game in Ruby!')
   end
   def ask_human_for_move
-    puts "Please enter next move:"
-    position = gets
-    position.delete!("\n").to_i
+    puts "Please human enter next move:"
+    @human_player.move(@board)
   end
   def ask_machine_for_move
     puts "Machine is thinking next move..."
-    position = Random.rand(9)
-    position
+    @machine_player.move(@board)
   end
   def make_move(position)
     token = player.get_token
@@ -29,12 +29,12 @@ class Game
   end
   def run
     while !@game_rules.winner?(@board)
-      board = make_move(ask_human_for_move) 
+      @board = ask_human_for_move
       show_board
       if @game_rules.winner?(@board) 
         break 
       end
-      board = make_move(ask_machine_for_move)
+      @board = ask_machine_for_move
       show_board
     end
   end
@@ -42,7 +42,7 @@ class Game
     puts
     (0..2).each do |i|
       (0..2).each do |k|
-         print "#{@board.squares[k + 3*i - 1]} "
+        print "#{@board.squares[k + 3*i]} "
       end
       puts
     end
