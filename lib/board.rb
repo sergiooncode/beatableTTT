@@ -7,7 +7,7 @@ class Board
       @squares << '-'
     end
   end
-  def is_square_empty(position)
+  def empty?(position)
     @squares[position] == '-'
   end
 end

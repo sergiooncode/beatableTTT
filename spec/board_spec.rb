@@ -14,12 +14,12 @@ describe Board do
     expect(@board.squares).to eql('-X-------')
   end
   it "checks if an square is empty and it is" do 
-    expect(@board.is_square_empty(3)).to be_true 
+    expect(@board.empty?(3)).to be_true 
   end
   it "checks if an square is empty and it is not" do
     @board.squares[2] = 'O'
 
-    expect(@board.is_square_empty(2)).to be_false
+    expect(@board.empty?(2)).to be_false
   end
   it "gets the token in one square" do
     @board.squares[8] = 'X'
