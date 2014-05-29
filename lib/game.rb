@@ -31,16 +31,21 @@ class Game
     @player.move(@board, position, token).squares
   end
   def run
-    while !@game_rules.winner?(@board)
+    while !@game_rules.winner?(@board) && !@game_rules.tie?(@board)
       @board = ask_human_for_move
       show_board
-      if @game_rules.winner?(@board) 
+      if @game_rules.winner?(@board) || @game_rules.tie?(@board)
         break 
       end
       @board = ask_machine_for_move
       show_board
     end
     show_board
+    if @game_rules.winner?(@board)
+      puts "Player #{@game_rules.who_is_winner} won."
+    else
+      puts "It was a tie."
+    end
   end
   def show_board
     puts
