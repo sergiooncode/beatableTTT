@@ -99,5 +99,33 @@ describe GameRules do
 
       expect(game_rules.winner?(@board)).to be_true
     end
+    it "there is no winner and returns nil" do
+      @board.squares[0] = 'X'
+      @board.squares[1] = 'O'
+      @board.squares[2] = 'X'
+      @board.squares[3] = 'X'
+      @board.squares[4] = 'O'
+      @board.squares[5] = '-'
+      @board.squares[6] = '-'
+      @board.squares[7] = '-'
+      @board.squares[8] = '-'
+      game_rules.winner?(@board)
+
+      expect(game_rules.who_is_winner).to eql nil
+    end
+    it "there is a winner and returns its token" do
+      @board.squares[0] = 'X'
+      @board.squares[1] = 'O'
+      @board.squares[2] = 'X'
+      @board.squares[3] = 'X'
+      @board.squares[4] = 'O'
+      @board.squares[5] = '-'
+      @board.squares[6] = '-'
+      @board.squares[7] = 'O'
+      @board.squares[8] = '-'
+      game_rules.winner?(@board)
+
+      expect(game_rules.who_is_winner).to eql 'O'
+    end
   end
 end

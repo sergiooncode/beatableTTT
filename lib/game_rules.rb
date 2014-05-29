@@ -1,4 +1,9 @@
 class GameRules
+  attr_reader :who_is_winner
+
+  def initialize
+    @who_is_winner = nil
+  end
   def check_on_rows(board)
     squares = board.squares
     start_row = 0
@@ -36,12 +41,15 @@ class GameRules
   end
   def winner?(board)
     if check_on_rows(board) != nil
-     return true
+      @who_is_winner = check_on_rows(board)
+      return true
     end
     if check_on_columns(board) != nil 
-     return true
+      @who_is_winner = check_on_columns(board)
+      return true
     end
     if check_on_diagonals(board) != nil
+      @who_is_winner = check_on_diagonals(board)
       return true
     end
     false
