@@ -15,8 +15,13 @@ describe Game do
       expect(game.player).not_to be_nil
     end
   end
-  context "while playing" do
+  context "while game is ongoing" do
     let(:game){ described_class.new }
+    it "runs the game" do
+      expect(game).to receive(:run)
+
+      game.run
+    end
     it "asks human player for move one time" do
       expect(game).to receive(:ask_human_for_move)
 
