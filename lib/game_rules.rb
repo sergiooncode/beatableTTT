@@ -30,7 +30,7 @@ class GameRules
   def check_on_diagonals(board)
     squares = board.squares
     start_diagonal = 0
-    if !board.empty?(start_diagonal) && squares[start_diagonal] == squares[start_diagonal + 4] && squares[start_diagonal] == squares[start_diagonal + 4]
+    if !board.empty?(start_diagonal) && squares[start_diagonal] == squares[start_diagonal + 4] && squares[start_diagonal] == squares[start_diagonal + 8]
       winner = squares[start_diagonal]
     end
     start_diagonal += 6
@@ -53,5 +53,12 @@ class GameRules
       return true
     end
     false
+  end
+  def tie?(board)
+    tie = false
+    if board.filled? && !winner?(board)
+      tie = true
+    end
+    tie
   end
 end

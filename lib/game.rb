@@ -13,7 +13,10 @@ class Game
     @game_rules = GameRules.new
   end
   def start
-    puts('Welcome to TTT game in Ruby!')
+    puts "Welcome to TTT game in Ruby!"
+    puts "Human plays with X"
+    puts "Machine plays with O"
+    puts
   end
   def ask_human_for_move
     puts "Please human enter next move:"
@@ -37,6 +40,7 @@ class Game
       @board = ask_machine_for_move
       show_board
     end
+    show_board
   end
   def show_board
     puts

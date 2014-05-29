@@ -3,9 +3,9 @@ require 'game'
 describe Game do
   context "when new game created" do
     let(:game){ described_class.new }
-    it "sends a welcome message" do
-      expect(game).to receive(:puts).with('Welcome to TTT game in Ruby!') 
-    
+    it "sends messages of welcome and use of tokens" do
+      expect(game).to receive(:start)
+
       game.start
     end
     it "has a board" do

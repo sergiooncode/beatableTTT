@@ -26,4 +26,20 @@ describe Board do
 
     expect(@board.squares).to eql('--------X')
   end
+  it "checks if board is filled and it is not" do
+    expect(@board.filled?).to be_false
+  end
+  it "checks if board is filled and it is" do
+    @board.squares[0] = 'X'
+    @board.squares[1] = 'O'
+    @board.squares[2] = 'X'
+    @board.squares[3] = 'O'
+    @board.squares[4] = 'X'
+    @board.squares[5] = 'X'
+    @board.squares[6] = 'O'
+    @board.squares[7] = 'X'
+    @board.squares[8] = 'O'
+
+    expect(@board.filled?).to be_true
+  end
 end
