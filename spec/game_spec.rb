@@ -35,5 +35,10 @@ describe Game do
     it "makes next move calling move method on player instance with position 5" do
       expect(game.make_move(5)).to eql('----X----')
     end
+    it "shows current board formatted" do
+      expect(game).to receive(:show_board)
+
+      game.show_board
+    end
   end
 end
