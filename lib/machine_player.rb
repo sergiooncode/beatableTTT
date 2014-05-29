@@ -6,6 +6,9 @@ class MachinePlayer
   end
   def move(board)
     index = Random.rand(9)
+    while board.squares[index] != '-'
+      index = Random.rand(9)
+    end
     board.squares[index] = @token 
     board
   end
