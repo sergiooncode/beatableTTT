@@ -3,11 +3,6 @@ require 'game'
 describe Game do
   context "when new game created" do
     let(:game){ described_class.new }
-    it "sends messages of welcome and use of tokens" do
-      expect(game).to receive(:start)
-
-      game.start
-    end
     it "has a board" do
       expect(game.board).not_to be_nil
     end

@@ -2,20 +2,21 @@ require 'board'
 require 'human_player'
 require 'game_rules'
 require 'machine_player'
+require 'cli'
 
 class Game
-  attr_accessor :board, :human_player, :machine_player, :game_rules
+  attr_accessor :cli, :board, :human_player, :machine_player, :game_rules
 
   def initialize
     @board = Board.new(9)
     @human_player = HumanPlayer.new('X')
     @machine_player = MachinePlayer.new('O')
     @game_rules = GameRules.new
+    @cli = Cli.new
   end
   def start
-    puts "Welcome to TTT game in Ruby!"
-    puts "Human plays with X"
-    puts "Machine plays with O"
+    @cli.welcome
+    @cli.announce_players_tokens
     puts
   end
   def ask_human_for_move
@@ -31,10 +32,10 @@ class Game
     @player.move(@board, position, token).squares
   end
   def run
-    while !@game_rules.winner?(@board) && !@game_rules.tie?(@board)
+    while !game_rules.gameover?(@board)
       @board = ask_human_for_move
       show_board
-      if @game_rules.winner?(@board) || @game_rules.tie?(@board)
+      if game_rules.gameover?(@board)
         break 
       end
       @board = ask_machine_for_move
