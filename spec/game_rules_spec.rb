@@ -154,4 +154,39 @@ describe GameRules do
       expect(game_rules.tie?(@board)).to be_false
     end
   end
+  context "when checking if game is over" do
+    let(:game_rules){ described_class.new }
+    before :each do
+      @board = Board.new(9)
+    end
+    it "it is not" do
+      expect(game_rules.gameover?(@board)).to be_false
+    end
+    it "there is a winner" do
+      @board.squares[0] = 'X'
+      @board.squares[1] = 'O'
+      @board.squares[2] = 'X'
+      @board.squares[3] = 'X'
+      @board.squares[4] = 'O'
+      @board.squares[5] = '-'
+      @board.squares[6] = '-'
+      @board.squares[7] = 'O'
+      @board.squares[8] = '-'
+
+      expect(game_rules.gameover?(@board)).to be_true
+    end
+    it "it is a tie" do
+      @board.squares[0] = 'X'
+      @board.squares[1] = 'O'
+      @board.squares[2] = 'X'
+      @board.squares[3] = 'O'
+      @board.squares[4] = 'X'
+      @board.squares[5] = 'X'
+      @board.squares[6] = 'O'
+      @board.squares[7] = 'X'
+      @board.squares[8] = 'O'
+
+      expect(game_rules.gameover?(@board)).to be_true
+    end
+  end
 end

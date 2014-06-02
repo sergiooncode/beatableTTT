@@ -61,4 +61,7 @@ class GameRules
     end
     tie
   end
+  def gameover?(board)
+    winner?(board) || tie?(board)
+  end
 end
